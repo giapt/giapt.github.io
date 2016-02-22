@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="ToDo">
+<head>
+	<title>Todo App</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div ng-controller="todoController" id="todoApp">
+	<div id ="header">
+            <h1> todos </h1>
+        </div>
+    <div id="main">
+    	<div id="todo-form">
+			<form name="frm" ng-submit="addTodo()">
+				<input id ="input-form" placeholder="What needs to be done?" type="text" name="newTodo" ng-model="newTodo" required />
+				<!-- <button ng-disabled="frm.$invalid">Go</button> -->
+
+			</form>
+		</div>
+	<!-- <button ng-click="clearCompleted()">Clear Completed</button> -->
+		<div id="list-active">
+			<ul>
+				<div class="list" ng-repeat="todo in todos">
+					<input type="checkbox" ng-model="todo.done">
+					<span ng-class="{'done':todo.done}">
+						{{todo.title}}
+					</span>
+					
+				</div>
+			</ul>
+		</div>
+
+		</div>
+		<div id="footer" >
+	              <a class="item-count" >{{itemcount}} items left </a>
+	               <button class="button" type="button" ng-class="{'border': x===0}"> All</button>  
+	               <button class="button" type="button" ng-class="{'border': x===1}">Active</button>
+	                <button class="button" type="button" ng-class="{'border': x===2}">Completed</button>
+	                 <button class="button-clear" type="button" ng-click="clearCompleted()">Clear Completed</button>
+	          </div>
+	            <div id="footer1" ng-show="showAllTask.length"></div>
+	             <div id="footer2" ng-show="showAllTask.length"></div>
+</div>
+
+<script src="js/angular.min.js"></script>
+<script src="js/todo.js"></script>
+
+</body>
+</html>
